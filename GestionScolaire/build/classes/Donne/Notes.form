@@ -83,11 +83,6 @@
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtcontrole" max="32767" attributes="0"/>
                       </Group>
-                      <Group type="102" alignment="1" attributes="0">
-                          <Component id="jLabel3" min="-2" pref="92" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Component id="txtMatNot" max="32767" attributes="0"/>
-                      </Group>
                       <Group type="102" attributes="0">
                           <Component id="jLabel2" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -96,41 +91,39 @@
                           <Component id="jButton1" min="-2" pref="131" max="-2" attributes="0"/>
                       </Group>
                       <Group type="102" attributes="0">
-                          <Component id="jLabel6" min="-2" pref="92" max="-2" attributes="0"/>
-                          <EmptySpace type="separate" max="-2" attributes="0"/>
-                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                              <Group type="102" attributes="0">
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jButton3" max="32767" attributes="0"/>
-                                      <Component id="Badd" max="32767" attributes="0"/>
-                                  </Group>
-                                  <EmptySpace max="-2" attributes="0"/>
-                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
-                                      <Component id="jButton5" max="32767" attributes="0"/>
-                                      <Component id="jButton4" pref="108" max="32767" attributes="0"/>
-                                  </Group>
-                              </Group>
-                              <Component id="txttp" max="32767" attributes="0"/>
-                          </Group>
-                          <EmptySpace min="0" pref="0" max="32767" attributes="0"/>
-                      </Group>
-                      <Group type="102" attributes="0">
                           <Component id="jLabel1" min="-2" pref="92" max="-2" attributes="0"/>
                           <EmptySpace type="separate" max="-2" attributes="0"/>
                           <Component id="txtnote" max="32767" attributes="0"/>
                           <EmptySpace min="-2" pref="132" max="-2" attributes="0"/>
                       </Group>
+                      <Group type="102" attributes="0">
+                          <Component id="jLabel6" min="-2" pref="92" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                              <Component id="txttp" max="32767" attributes="0"/>
+                              <Group type="102" alignment="0" attributes="0">
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jButton3" max="32767" attributes="0"/>
+                                      <Component id="Badd" max="32767" attributes="0"/>
+                                      <Component id="jButton2" max="32767" attributes="0"/>
+                                  </Group>
+                                  <EmptySpace max="-2" attributes="0"/>
+                                  <Group type="103" groupAlignment="0" max="-2" attributes="0">
+                                      <Component id="jButton6" max="32767" attributes="0"/>
+                                      <Component id="jButton5" max="32767" attributes="0"/>
+                                      <Component id="jButton4" pref="108" max="32767" attributes="0"/>
+                                  </Group>
+                              </Group>
+                          </Group>
+                          <EmptySpace min="0" pref="16" max="32767" attributes="0"/>
+                      </Group>
+                      <Group type="102" alignment="0" attributes="0">
+                          <Component id="jLabel3" min="-2" pref="92" max="-2" attributes="0"/>
+                          <EmptySpace type="separate" max="-2" attributes="0"/>
+                          <Component id="txtMatNot" max="32767" attributes="0"/>
+                      </Group>
                   </Group>
                   <EmptySpace max="-2" attributes="0"/>
-              </Group>
-              <Group type="102" alignment="0" attributes="0">
-                  <EmptySpace max="-2" attributes="0"/>
-                  <Component id="jButton2" min="-2" pref="103" max="-2" attributes="0"/>
-                  <EmptySpace type="separate" max="-2" attributes="0"/>
-                  <Component id="jButton6" min="-2" pref="103" max="-2" attributes="0"/>
-                  <EmptySpace type="unrelated" max="-2" attributes="0"/>
-                  <Component id="jButton7" min="-2" pref="103" max="-2" attributes="0"/>
-                  <EmptySpace pref="29" max="32767" attributes="0"/>
               </Group>
           </Group>
         </DimensionLayout>
@@ -150,10 +143,10 @@
                       <Component id="txtEtud" alignment="3" max="32767" attributes="0"/>
                       <Component id="jButton1" alignment="3" min="-2" max="-2" attributes="0"/>
                   </Group>
-                  <EmptySpace min="-2" pref="19" max="-2" attributes="0"/>
-                  <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="txtMatNot" alignment="3" pref="32" max="32767" attributes="0"/>
-                      <Component id="jLabel3" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                  <EmptySpace type="separate" max="-2" attributes="0"/>
+                  <Group type="103" groupAlignment="1" attributes="0">
+                      <Component id="jLabel3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="txtMatNot" min="-2" pref="33" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
@@ -183,8 +176,7 @@
                   <EmptySpace max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
                       <Component id="jButton2" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jButton6" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
-                      <Component id="jButton7" alignment="3" min="-2" pref="32" max="-2" attributes="0"/>
+                      <Component id="jButton6" alignment="0" min="-2" pref="32" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace min="-2" pref="75" max="-2" attributes="0"/>
               </Group>
@@ -253,18 +245,12 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JTextField" name="txtMatNot">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="0"/>
-            </Property>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JTextField" name="txtcontrole">
           <Properties>
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="00.00"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txtexamen">
@@ -272,6 +258,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="00.00"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JTextField" name="txttp">
@@ -279,6 +266,7 @@
             <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
               <Font name="Tahoma" size="14" style="0"/>
             </Property>
+            <Property name="text" type="java.lang.String" value="00.00"/>
           </Properties>
         </Component>
         <Component class="javax.swing.JButton" name="jButton1">
@@ -370,15 +358,17 @@
             <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton6ActionPerformed"/>
           </Events>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton7">
-          <Properties>
-            <Property name="font" type="java.awt.Font" editor="org.netbeans.beaninfo.editors.FontEditor">
-              <Font name="Tahoma" size="14" style="1"/>
-            </Property>
-            <Property name="text" type="java.lang.String" value="Listes"/>
-          </Properties>
-        </Component>
         <Component class="javax.swing.JComboBox" name="txtEtud">
+          <Properties>
+            <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+              <StringArray count="0"/>
+            </Property>
+          </Properties>
+          <AuxValues>
+            <AuxValue name="JavaCodeGenerator_TypeParameters" type="java.lang.String" value="&lt;String&gt;"/>
+          </AuxValues>
+        </Component>
+        <Component class="javax.swing.JComboBox" name="txtMatNot">
           <Properties>
             <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
               <StringArray count="0"/>

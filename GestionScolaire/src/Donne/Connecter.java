@@ -28,6 +28,7 @@ public class Connecter extends javax.swing.JFrame {
     static String user = "root";
     static String password = "";
 
+    //CONSTRUCTEUR PAR DEFAUT
     public Connecter() {
         initComponents();
     }
@@ -141,11 +142,15 @@ public class Connecter extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+     //==================ICON EXIT====================================
     private void jLabel4MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabel4MouseClicked
         // TODO add your handling code here:
         System.exit(0);
     }//GEN-LAST:event_jLabel4MouseClicked
 
+    
+     //==================BOUTTON CONNECTION====================================
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {
@@ -175,6 +180,7 @@ public class Connecter extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jCheckBox1ActionPerformed
 
+     //==================METHODDE POUR AFFICHER LE MOT DE PASSE====================================
     private void jCheckBox1MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jCheckBox1MouseClicked
         // TODO add your handling code here:
         try {

@@ -24,16 +24,22 @@ public class Matières extends javax.swing.JFrame {
     /**
      * Creates new form Matières
      */
+    
+    //IMPORTER LES BIBLIOTHEQUES DE CONNECTION
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
     static String url = "jdbc:mysql://localhost/gestion";
     static String user = "root";
     static String password = "";
+    
+    //CONSTRUCTEUR PAR DEFAUT
     public Matières() {
         initComponents();
         Table();
     }
+    
+    //METHODE CONNECTION
     public void Connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -42,6 +48,8 @@ public class Matières extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+    //==================METHODDE POUR ACTUALISER LES CHAMPS====================================
     public void Actualiser() {
         txtidentifiant.setText("");
         txtappellation.setText("");
@@ -50,6 +58,7 @@ public class Matières extends javax.swing.JFrame {
         Badd.setEnabled(true);
     }
     
+    //==================METHODDE POUR AFFICHER LA LISTE DANS UN TABLEAU====================================
     public void Table() {
         String[] matieres = {"Identifiants", "Appellations", "Filières", "Niveaux"};
         String[] afficher = new String[5];
@@ -77,6 +86,8 @@ public class Matières extends javax.swing.JFrame {
 
         }
     }
+    
+    //==================METHODDE POUR RECHERCHER DANS LE TABLEAU====================================
     private void Rechercher(String recherche){
         String util[] = {
             "Identifiants", 
@@ -341,6 +352,8 @@ public class Matières extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //==================BOUTTON POUR AJOUTER UNE MATIERE====================================
     private void BaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BaddActionPerformed
         // Ajouter une matière 
         if (txtidentifiant.getText().trim().isEmpty() || txtappellation.getText().trim().isEmpty()) {
@@ -369,11 +382,13 @@ public class Matières extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BaddActionPerformed
 
+    //==================BOUTTON POUR ACTUALISER LES CHAMPS====================================
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         Actualiser();
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    //==================BOUTTON POUR MODIFIER UNE MATIERE====================================
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         if (txtidentifiant.getText().trim().isEmpty() || txtappellation.getText().trim().isEmpty()) {
@@ -408,6 +423,7 @@ public class Matières extends javax.swing.JFrame {
        
     }//GEN-LAST:event_jTable1MouseReleased
 
+    //==================BOUTTON POUR SUPPRIMER UNE MATIERE====================================
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // Supprimer une matière 
         if (txtidentifiant.getText().trim().isEmpty() || txtappellation.getText().trim().isEmpty()) {
@@ -440,6 +456,7 @@ public class Matières extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //==================BOUTTON POUR RECHERCHER UNE MATIERE====================================
     private void txtidentifiantKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidentifiantKeyReleased
         // TODO add your handling code here:
         Rechercher(txtidentifiant.getText());

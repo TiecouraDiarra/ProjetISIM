@@ -3,7 +3,6 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-
 package Donne;
 
 import javax.swing.JOptionPane;
@@ -17,6 +16,7 @@ public class Parametre extends javax.swing.JFrame {
     /**
      * Creates new form Parametre
      */
+    //CONSTRUCTEUR PAR DEFAUT
     public Parametre() {
         initComponents();
     }
@@ -215,34 +215,41 @@ public class Parametre extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //==================BOUTTON CHANGER LE MOT DE PASSE====================================
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         GeMDP gemdp = new GeMDP();
         gemdp.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    //==================BOUTTON POUR CHANGER LA LANGUE====================================
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         langue langue = new langue();
         langue.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    //==================BOUTTON A PROPOS====================================
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
-        Apropos apropos = new Apropos();
-        apropos.setVisible(true);
+        /*Apropos apropos = new Apropos();
+        apropos.setVisible(true);*/
+        JOptionPane.showMessageDialog(null, "GestionScolaire Version 1.0.0\n @Copyright by TiecouraDiarra");
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    //==================BOUTTON DE DECONNECTION====================================
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         try {
-                if (JOptionPane.showConfirmDialog(null, "Attention, Voulez-vous vraiment vous déconnecer ?",
-                        "Se déconnecter", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
-                    System.exit(0);
-                }
-            } catch (Exception e) {
-                e.printStackTrace(); //POUR GERER LES ERREURS 
+            if (JOptionPane.showConfirmDialog(null, "Attention, Voulez-vous vraiment vous déconnecer ?",
+                    "Se déconnecter", JOptionPane.YES_NO_OPTION) == JOptionPane.OK_OPTION) {
+                this.dispose();
+                Connecter co = new Connecter();
+                co.setVisible(true);
             }
-        
+        } catch (Exception e) {
+            e.printStackTrace(); //POUR GERER LES ERREURS 
+        }
+
     }//GEN-LAST:event_jButton5ActionPerformed
 
     /**

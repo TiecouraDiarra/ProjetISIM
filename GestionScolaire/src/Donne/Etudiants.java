@@ -34,6 +34,7 @@ public class Etudiants extends javax.swing.JFrame {
     static String user = "root";
     static String password = "";
 
+    //CONSTRUCTEUR PAR DEFAUT
     public Etudiants() {
         initComponents();
         Table();
@@ -62,10 +63,10 @@ public class Etudiants extends javax.swing.JFrame {
         jButton2 = new javax.swing.JButton();
         Bdelete = new javax.swing.JButton();
         jButton4 = new javax.swing.JButton();
-        txtdatnai = new com.toedter.calendar.JDateChooser();
-        txtdateins = new com.toedter.calendar.JDateChooser();
         jScrollPane3 = new javax.swing.JScrollPane();
         txtadresse = new javax.swing.JTextPane();
+        txtdatnai = new javax.swing.JTextField();
+        txtdateins = new javax.swing.JTextField();
         jLabel1 = new javax.swing.JLabel();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
@@ -124,7 +125,7 @@ public class Etudiants extends javax.swing.JFrame {
                 txtnomActionPerformed(evt);
             }
         });
-        jPanel1.add(txtnom, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 67, 275, 28));
+        jPanel1.add(txtnom, new org.netbeans.lib.awtextra.AbsoluteConstraints(156, 67, 260, 28));
 
         jcniveau.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jcniveau.setModel(new javax.swing.DefaultComboBoxModel(new String[] { "M", "F" }));
@@ -170,13 +171,11 @@ public class Etudiants extends javax.swing.JFrame {
         });
         jPanel1.add(jButton4, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 360, 135, 35));
 
-        txtdatnai.setDateFormatString("yyyy-MM-dd");
-        jPanel1.add(txtdatnai, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 160, 30));
-        jPanel1.add(txtdateins, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 160, 30));
-
         jScrollPane3.setViewportView(txtadresse);
 
         jPanel1.add(jScrollPane3, new org.netbeans.lib.awtextra.AbsoluteConstraints(150, 250, 270, 60));
+        jPanel1.add(txtdatnai, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 120, 140, 30));
+        jPanel1.add(txtdateins, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 170, 140, 30));
 
         getContentPane().add(jPanel1, new org.netbeans.lib.awtextra.AbsoluteConstraints(10, 73, -1, 402));
 
@@ -270,17 +269,11 @@ public class Etudiants extends javax.swing.JFrame {
 
     }
     
-
+     //=========================== BOUTTON AJOUTER UN ETUDIANT=================================
     private void BaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BaddActionPerformed
-        // Ajouter un étudiant:
-        /*if(txtmatricule == null && txtnom ==null && txtdatnai==null && txtdateins==null && txtadresse==null){
-         JOptionPane.showMessageDialog(null, "Les champs sont vides");
-         }else{*/
-        /*SimpleDateFormat sp = new SimpleDateFormat("yyyy/MM/dd");
-        String date = sp.format(txtdatnai1.getDate());*/
-        
+
         if (txtmatricule.getText().trim().isEmpty() || txtnom.getText().trim().isEmpty()
-                || txtdatnai.getDateFormatString().trim().isEmpty() || txtdateins.getDateFormatString().trim().isEmpty()
+                || txtdatnai.getText().trim().isEmpty() || txtdateins.getText().trim().isEmpty()
                 || txtadresse.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires!");
 
@@ -294,9 +287,9 @@ public class Etudiants extends javax.swing.JFrame {
                 /*SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
                 String date = sdf.format(txtdatnai.getDate());
                 pst.setString(3, date);*/
-                pst.setString(3, txtdatnai.getDateFormatString());
+                pst.setString(3, txtdatnai.getText());
                 //pst.setString(3, ((JTextField)txtdatnai.getDateEditor().getUiComponent()).getText());
-                pst.setString(4, txtdateins.getDateFormatString());
+                pst.setString(4, txtdateins.getText());
                 /*String date2 = sdf.format(txtdateins.getDate());
                 pst.setString(4, date2);*/
                 pst.setString(5, jcniveau.getSelectedItem().toString());
@@ -316,10 +309,11 @@ public class Etudiants extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BaddActionPerformed
 
+    //=========================== BOUTTON MODIFIER UN ETUDIANT=================================
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
-        // TODO add your handling code here:
+        
         if (txtmatricule.getText().trim().isEmpty() || txtnom.getText().trim().isEmpty()
-                || txtdateins.getDateFormatString().trim().isEmpty() || txtdateins.getDateFormatString().trim().isEmpty()
+                || txtdateins.getText().trim().isEmpty() || txtdateins.getText().trim().isEmpty()
                 || txtadresse.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Aucune modification, s'il vous plaît veuillez choisir un étudiant à modifier ");
         } else {
@@ -331,8 +325,8 @@ public class Etudiants extends javax.swing.JFrame {
                 pst = con.prepareStatement("update etudiant set nom=?,naissance=?,inscription=?,sexe=?,adresse=? where matricule=?");
                 pst.setString(6, txtmatricule.getText());
                 pst.setString(1, txtnom.getText());
-                pst.setString(2, txtdateins.getDateFormatString());
-                pst.setString(3, txtdateins.getDateFormatString());
+                pst.setString(2, txtdatnai.getText());
+                pst.setString(3, txtdateins.getText());
                 pst.setString(4, jcniveau.getSelectedItem().toString());
                 pst.setString(5, txtadresse.getText());
                 pst.executeUpdate(); // EXECUTION DE LA REQUETE
@@ -352,16 +346,17 @@ public class Etudiants extends javax.swing.JFrame {
         int selct = jTable1.getSelectedRow();
         txtmatricule.setText(model.getValueAt(selct, 0).toString());
         txtnom.setText(model.getValueAt(selct, 1).toString());
-        txtdateins.setDateFormatString(model.getValueAt(selct, 2).toString());
-        txtdateins.setDateFormatString(model.getValueAt(selct, 3).toString());
+        txtdatnai.setText(model.getValueAt(selct, 2).toString());
+        txtdateins.setText(model.getValueAt(selct, 3).toString());
         jcniveau.setSelectedItem(model.getValueAt(selct, 4).toString());
         txtadresse.setText(model.getValueAt(selct, 5).toString());
     }//GEN-LAST:event_jTable1MouseReleased
 
+    //=========================== BOUTTON SUPPRIMER UN ETUDIANT=================================
     private void BdeleteActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BdeleteActionPerformed
-        // TODO add your handling code here:
+        
         if (txtmatricule.getText().trim().isEmpty() || txtnom.getText().trim().isEmpty()
-                || txtdateins.getDateFormatString().trim().isEmpty() || txtdateins.getDateFormatString().trim().isEmpty()
+                || txtdateins.getText().trim().isEmpty() || txtdateins.getText().trim().isEmpty()
                 || txtadresse.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Veuillez selectionner un étudiant");
 
@@ -387,6 +382,7 @@ public class Etudiants extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BdeleteActionPerformed
 
+    //=========================== BOUTTON ACTUALISER LES CHAMPS=================================
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         Actualiser();
@@ -397,22 +393,25 @@ public class Etudiants extends javax.swing.JFrame {
         //Rechercher(txtrecherche.getText());
         
     }//GEN-LAST:event_BrechercheActionPerformed
-
+    
+    //=========================== BOUTTON RECHERCHER DANS LE TABLEAU=================================
     private void txtrechercheKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtrechercheKeyReleased
         // TODO add your handling code here:
         Rechercher(txtrecherche.getText());
     }//GEN-LAST:event_txtrechercheKeyReleased
 
+    //=========================== METHODE POUR ACTUALISER LES CHAMPS=================================
     public void Actualiser() {
         txtmatricule.setText("");
         txtnom.setText("");
-        txtdateins.setDateFormatString("");
-        txtdateins.setDateFormatString("");
+        txtdatnai.setText("");
+        txtdateins.setText("");
         jcniveau.setSelectedItem("");
         txtadresse.setText("");
         Badd.setEnabled(true);
     }
-
+    
+    //=========================== METHODE POUR AFFICHER LA LISTE DANS UN TABLEAU=================================
     public void Table() {
         String[] etudiant = {"Matricules", "Noms & Prénoms", "Date Naissance", "Date Inscription", "Sexe", "Adresse"};
         String[] afficher = new String[7];
@@ -442,6 +441,8 @@ public class Etudiants extends javax.swing.JFrame {
 
         }
     }
+    
+    //=========================== METHODE POUR RECHERCHER DANS LE TABLEAU=================================
     private void Rechercher(String recherche){
         String etudiant[] = {
             "Matricules", 
@@ -530,8 +531,8 @@ public class Etudiants extends javax.swing.JFrame {
     private javax.swing.JTextPane jTextPane1;
     private javax.swing.JComboBox jcniveau;
     private javax.swing.JTextPane txtadresse;
-    private com.toedter.calendar.JDateChooser txtdateins;
-    private com.toedter.calendar.JDateChooser txtdatnai;
+    private javax.swing.JTextField txtdateins;
+    private javax.swing.JTextField txtdatnai;
     private javax.swing.JTextField txtmatricule;
     private javax.swing.JTextField txtnom;
     private javax.swing.JTextField txtrecherche;

@@ -27,17 +27,24 @@ public class Notes extends javax.swing.JFrame {
     /**
      * Creates new form Notes
      */
+    
+    //IMPORTER LES BIBLIOTHEQUES DE CONNECTION
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
     static String url = "jdbc:mysql://localhost/gestion";
     static String user = "root";
     static String password = "";
+    
+    //CONSTRUCTEUR PAR DEFAUT
     public Notes() {
         initComponents();
         Table();
         appeletudiant();
+        appelMatiere();
     }
+    
+    //METHODE CONNECTION
     public void Connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -46,15 +53,36 @@ public class Notes extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+    //==================METHODDE POUR APPELER LES MATIERES ENREGISTREES====================================
+    public void appelMatiere(){
+        try {
+            Class.forName("com.mysql.jdbc.Driver");
+            con = DriverManager.getConnection(url, user, password);
+            String sql = "select * from matieres";
+            //PreparedStatement pst = con.prepareStatement(sql);
+            Statement st = con.createStatement();
+            rs = st.executeQuery(sql);
+            while(rs.next()){
+                txtMatNot.addItem(rs.getString("idmatiere"));
+            }
+        } catch (Exception e) {
+
+        }
+    }
+    
+    //==================METHODDE POUR ACTUALISER LES CHAMPS====================================
     public void Actualiser() {
         txtnote.setText("");
         txtEtud.setSelectedItem("");
-        txtMatNot.setText("");
+        txtMatNot.setSelectedItem("");
         txtcontrole.setText("");
         txtexamen.setText("");
         txttp.setText("");
         Badd.setEnabled(true);
     }
+    
+    //==================METHODDE POUR AFFICHER LA LISTE DANS UN TABLEAU====================================
     public void Table() {
         String[] note = {"NoteID", "Etudiant", "Matière", "Contrôle", "Examen", "TP"};
         String[] afficher = new String[7];
@@ -84,6 +112,8 @@ public class Notes extends javax.swing.JFrame {
 
         }
     }
+    
+     //==================METHODDE POUR RECHERCHER DANS LE TABLEAU====================================
     private void Rechercher(String recherche){
         String util[] = {
             "NoteID", 
@@ -116,6 +146,7 @@ public class Notes extends javax.swing.JFrame {
         }
     }
     
+     //==================METHODDE POUR APPELER LES ETUDIANT ENREGISTRES====================================
     public void appeletudiant(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -149,7 +180,6 @@ public class Notes extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         txtnote = new javax.swing.JTextField();
-        txtMatNot = new javax.swing.JTextField();
         txtcontrole = new javax.swing.JTextField();
         txtexamen = new javax.swing.JTextField();
         txttp = new javax.swing.JTextField();
@@ -160,8 +190,8 @@ public class Notes extends javax.swing.JFrame {
         jButton5 = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jButton6 = new javax.swing.JButton();
-        jButton7 = new javax.swing.JButton();
         txtEtud = new javax.swing.JComboBox<>();
+        txtMatNot = new javax.swing.JComboBox<>();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTable1 = new javax.swing.JTable();
         jLabel7 = new javax.swing.JLabel();
@@ -197,13 +227,14 @@ public class Notes extends javax.swing.JFrame {
 
         txtnote.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
 
-        txtMatNot.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
-
         txtcontrole.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtcontrole.setText("00.00");
 
         txtexamen.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txtexamen.setText("00.00");
 
         txttp.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        txttp.setText("00.00");
 
         jButton1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jButton1.setText("Recherche");
@@ -265,9 +296,6 @@ public class Notes extends javax.swing.JFrame {
             }
         });
 
-        jButton7.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
-        jButton7.setText("Listes");
-
         javax.swing.GroupLayout jPanel1Layout = new javax.swing.GroupLayout(jPanel1);
         jPanel1.setLayout(jPanel1Layout);
         jPanel1Layout.setHorizontalGroup(
@@ -283,10 +311,6 @@ public class Notes extends javax.swing.JFrame {
                         .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtcontrole))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addComponent(txtMatNot))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
@@ -294,33 +318,31 @@ public class Notes extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 131, javax.swing.GroupLayout.PREFERRED_SIZE))
                     .addGroup(jPanel1Layout.createSequentialGroup()
-                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(18, 18, 18)
-                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addGroup(jPanel1Layout.createSequentialGroup()
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(Badd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE)))
-                            .addComponent(txttp))
-                        .addGap(0, 0, Short.MAX_VALUE))
-                    .addGroup(jPanel1Layout.createSequentialGroup()
                         .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(txtnote)
-                        .addGap(132, 132, 132)))
+                        .addGap(132, 132, 132))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(txttp)
+                            .addGroup(jPanel1Layout.createSequentialGroup()
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(Badd, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                    .addComponent(jButton6, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton5, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                                    .addComponent(jButton4, javax.swing.GroupLayout.DEFAULT_SIZE, 108, Short.MAX_VALUE))))
+                        .addGap(0, 16, Short.MAX_VALUE))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 92, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(txtMatNot, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                 .addContainerGap())
-            .addGroup(jPanel1Layout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
-                .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(29, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -335,10 +357,10 @@ public class Notes extends javax.swing.JFrame {
                     .addComponent(jLabel2, javax.swing.GroupLayout.PREFERRED_SIZE, 35, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(txtEtud)
                     .addComponent(jButton1))
-                .addGap(19, 19, 19)
-                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(txtMatNot, javax.swing.GroupLayout.DEFAULT_SIZE, 32, Short.MAX_VALUE)
-                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                    .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(txtMatNot, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -362,8 +384,7 @@ public class Notes extends javax.swing.JFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jButton7, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jButton6, javax.swing.GroupLayout.PREFERRED_SIZE, 32, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(75, 75, 75))
         );
 
@@ -418,10 +439,11 @@ public class Notes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //==================BOUTTON POUR AJOUTER UNE NOTE====================================
     private void BaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BaddActionPerformed
         // Ajouter une note
         if (txtnote.getText().trim().isEmpty()
-                || txtMatNot.getText().trim().isEmpty() || txtcontrole.getText().trim().isEmpty()
+                || txtcontrole.getText().trim().isEmpty()
                 || txtexamen.getText().trim().isEmpty() || txttp.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires!");
 
@@ -432,7 +454,7 @@ public class Notes extends javax.swing.JFrame {
                 pst = con.prepareStatement(sql);
                 pst.setString(1, txtnote.getText());
                 pst.setString(2, txtEtud.getSelectedItem().toString());
-                pst.setString(3, txtMatNot.getText());
+                pst.setString(3, txtMatNot.getSelectedItem().toString());
                 pst.setString(4, txtcontrole.getText());
                 pst.setString(5, txtexamen.getText());
                 pst.setString(6, txttp.getText());
@@ -451,15 +473,17 @@ public class Notes extends javax.swing.JFrame {
 
     }//GEN-LAST:event_BaddActionPerformed
 
+    //==================BOUTTON POUR ACTUALISER LES CHAMPS====================================
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         Actualiser();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    //==================BOUTTON POUR SUPPRIMER UNE NOTE====================================
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         if (txtnote.getText().trim().isEmpty() 
-                || txtMatNot.getText().trim().isEmpty() || txtcontrole.getText().trim().isEmpty()
+                || txtcontrole.getText().trim().isEmpty()
                 || txtexamen.getText().trim().isEmpty() || txttp.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Veuillez selectionner une note");
 
@@ -485,10 +509,11 @@ public class Notes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    //==================BOUTTON POUR MODIFIER UNE NOTE====================================
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         if (txtnote.getText().trim().isEmpty()
-                || txtMatNot.getText().trim().isEmpty() || txtcontrole.getText().trim().isEmpty()
+                || txtcontrole.getText().trim().isEmpty()
                 || txtexamen.getText().trim().isEmpty() || txttp.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Aucune modification, s'il vous plaît veuillez choisir une note à modifier ");
         } else {
@@ -497,7 +522,7 @@ public class Notes extends javax.swing.JFrame {
                 pst = con.prepareStatement("update note set matricule=?,matiere=?,controle=?,examen=?,tp=? where noteID=?");
                 pst.setString(6, txtnote.getText());
                 pst.setString(1, txtEtud.getSelectedItem().toString());
-                pst.setString(2, txtMatNot.getText());
+                pst.setString(2, txtMatNot.getSelectedItem().toString());
                 pst.setString(3, txtcontrole.getText());
                 pst.setString(4, txtexamen.getText());
                 pst.setString(5, txttp.getText());
@@ -518,18 +543,20 @@ public class Notes extends javax.swing.JFrame {
         int selct = jTable1.getSelectedRow();
         txtnote.setText(model.getValueAt(selct, 0).toString());
         txtEtud.setSelectedItem(model.getValueAt(selct, 1).toString());
-        txtMatNot.setText(model.getValueAt(selct, 2).toString());
+        txtMatNot.setSelectedItem(model.getValueAt(selct, 2).toString());
         txtcontrole.setText(model.getValueAt(selct, 3).toString());
         txtexamen.setText(model.getValueAt(selct, 4).toString());
         txttp.setText(model.getValueAt(selct, 5).toString());
     }//GEN-LAST:event_jTable1MouseReleased
 
+    //==================BOUTTON POUR AFFICHER LA PAGE ETUDIANT====================================
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         Etudiants Et = new Etudiants();
         Et.setVisible(true);
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    //==================BOUTTON POUR AFFICHER LA PAGE MATIERES====================================
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         Matières matiere = new Matières();
@@ -584,7 +611,6 @@ public class Notes extends javax.swing.JFrame {
     private javax.swing.JButton jButton4;
     private javax.swing.JButton jButton5;
     private javax.swing.JButton jButton6;
-    private javax.swing.JButton jButton7;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -596,7 +622,7 @@ public class Notes extends javax.swing.JFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTable1;
     private javax.swing.JComboBox<String> txtEtud;
-    private javax.swing.JTextField txtMatNot;
+    private javax.swing.JComboBox<String> txtMatNot;
     private javax.swing.JTextField txtcontrole;
     private javax.swing.JTextField txtexamen;
     private javax.swing.JTextField txtnote;

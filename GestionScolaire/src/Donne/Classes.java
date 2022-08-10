@@ -24,16 +24,22 @@ public class Classes extends javax.swing.JFrame {
     /**
      * Creates new form Classes
      */
+    
+    //IMPORTER LES BIBLIOTHEQUES DE CONNECTION
      Connection con;
     PreparedStatement pst;
     ResultSet rs;
     static String url = "jdbc:mysql://localhost/gestion";
     static String user = "root";
     static String password = "";
+    
+    //CONSTRUCTEUR PAR DEFAUT
     public Classes() {
         initComponents();
         Table();
     }
+    
+    //FONCTION CONNECTION 
      public void Connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -42,10 +48,13 @@ public class Classes extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+     //==================METHODDE POUR ACTUALISER LES CHAMPS====================================
      public void Actualiser() {
         txtid.setText("");
         txtclasse.setText("");
     }
+     
+     //==================METHODDE POUR AFFICHER LA LISTE DANS UN TABLEAU====================================
      public void Table() {
         String[] classes = {"ID", "CLASSES"};
         String[] afficher = new String[3];
@@ -71,6 +80,8 @@ public class Classes extends javax.swing.JFrame {
 
         }
     }
+     
+     //==================METHODDE POUR RECHERCHER DANS LE TABLEAU====================================
      private void Rechercher(String recherche){
         String util[] = {
             "ID", 
@@ -289,8 +300,9 @@ public class Classes extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    
+    //==================BOUTTON POUR AJOUTER UNE CLASSE====================================
     private void BaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BaddActionPerformed
-        // ajouter une classe
         if (txtid.getText().trim().isEmpty() && txtclasse.getText().trim().isEmpty()) {
             JOptionPane.showMessageDialog(null, "Tous les champs sont obligatoires!");
 
@@ -315,6 +327,8 @@ public class Classes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BaddActionPerformed
 
+    
+    //==================BOUTTON POUR SUPPRIMER UNE CLASSE====================================
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         if (txtid.getText().trim().isEmpty() || txtclasse.getText().trim().isEmpty()) {
@@ -342,11 +356,15 @@ public class Classes extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    
+    //==================BOUTTON POUR ACTUALISER LES CHAMPS====================================
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         Actualiser();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    
+    //==================BOUTTON POUR MODIFIER UNE CLASSE====================================
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         if (txtid.getText().trim().isEmpty() || txtclasse.getText().trim().isEmpty()) {
@@ -381,6 +399,8 @@ public class Classes extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
+    //==================BOUTTON POUR RECHERCHER UNE CLASSE====================================
     private void txtidKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidKeyReleased
         // TODO add your handling code here:
         Rechercher(txtid.getText());

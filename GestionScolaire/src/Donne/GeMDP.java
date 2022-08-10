@@ -24,18 +24,22 @@ public class GeMDP extends javax.swing.JFrame {
     /**
      * Creates new form GeMDP
      */
+    //CONSTRUCTEUR PAR DEFAUT
     public GeMDP() {
         initComponents();
         Table();
         Table2();
         
     }
+    //IMPORTER LES BIBLIOTHEQUES DE CONNECTION
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
     static String url = "jdbc:mysql://localhost/gestion";
     static String user = "root";
     static String password = "";
+    
+    //METHODE CONNECTION
     public void Connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -44,6 +48,8 @@ public class GeMDP extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+    //==================METHODDE POUR ACTUALISER LES CHAMPS====================================
      public void Actualiser() {
         txtiden.setText("");
         txtnom.setText("");
@@ -51,6 +57,8 @@ public class GeMDP extends javax.swing.JFrame {
         txtruser.setText("");
         txtradmin.setText("");
     }
+     
+     //==================METHODDE POUR AFFICHER LA LISTE DANS UN TABLEAU(UTILISATEUR)====================================
      public void Table2() {
         String[] login = {"ID", "NOM UTILISTATEUR", "MOT DE PASSE"};
         String[] afficher = new String[4];
@@ -77,6 +85,7 @@ public class GeMDP extends javax.swing.JFrame {
 
         }
     }
+     //==================METHODDE POUR RECHERCHER UN ADMINISTRATEUR====================================
      private void RechercherAdmin(String recherche){
         String util[] = {
             "ID", 
@@ -102,6 +111,8 @@ public class GeMDP extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+     
+     //==================METHODDE POUR AFFICHER LA LISTE DANS UN TABLEAU(ADMINISTRATEUR)====================================
      public void Table() {
         String[] users = {"ID", "NOM UTILISTATEUR", "MOT DE PASSE"};
         String[] afficher = new String[4];
@@ -128,6 +139,7 @@ public class GeMDP extends javax.swing.JFrame {
 
         }
     }
+     //==================METHODDE POUR RECHERCHER UN UTILISATEUR====================================
      private void RechercherUser(String recherche){
         String util[] = {
             "ID", 
@@ -485,6 +497,7 @@ public class GeMDP extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //=========================== BOUTTON AJOUTER UN ADMINISTRATEUR=================================
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // Inserer dans admin
         if (txtiden.getText().trim().isEmpty() || txtnom.getText().trim().isEmpty() || txtmdp.getText().trim().isEmpty()) {
@@ -512,6 +525,7 @@ public class GeMDP extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton2ActionPerformed
 
+    //=========================== BOUTTON SUPPRIMER UN ADMINISTRATEUR=================================
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         if (txtiden.getText().trim().isEmpty() || txtnom.getText().trim().isEmpty() || txtmdp.getText().trim().isEmpty()) {
@@ -540,6 +554,7 @@ public class GeMDP extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    //=========================== BOUTTON MODIFIER UN ADMINISTRATEUR=================================
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         if (txtiden.getText().trim().isEmpty() || txtnom.getText().trim().isEmpty() || txtmdp.getText().trim().isEmpty()) {
@@ -571,6 +586,7 @@ public class GeMDP extends javax.swing.JFrame {
         txtmdp.setText(model.getValueAt(selct, 2).toString());
     }//GEN-LAST:event_jTable2MouseReleased
 
+    //=========================== BOUTTON AJOUTER UN UTILISATEUR=================================
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // Inserer dans user
         if (txtiden.getText().trim().isEmpty() || txtnom.getText().trim().isEmpty() || txtmdp.getText().trim().isEmpty()) {
@@ -598,6 +614,7 @@ public class GeMDP extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //=========================== BOUTTON SUPPRIMER UN UTILISATEUR=================================
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // supprimer user
         if (txtiden.getText().trim().isEmpty() || txtnom.getText().trim().isEmpty() || txtmdp.getText().trim().isEmpty()) {
@@ -629,6 +646,7 @@ public class GeMDP extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    //=========================== BOUTTON MODIFIER UN UTILISATEUR=================================
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // Modifier user
         if (txtiden.getText().trim().isEmpty() || txtnom.getText().trim().isEmpty() || txtmdp.getText().trim().isEmpty()) {
@@ -679,11 +697,13 @@ public class GeMDP extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtruserActionPerformed
 
+    //=========================== BOUTTON RECHERCHER UN UTILISATEUR=================================
     private void txtruserKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtruserKeyReleased
         // TODO add your handling code here:
         RechercherUser(txtruser.getText());
     }//GEN-LAST:event_txtruserKeyReleased
 
+    //=========================== BOUTTON RECHERCHER UN ADMINISTRATEUR=================================
     private void txtradminKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtradminKeyReleased
         // TODO add your handling code here:
         RechercherAdmin(txtradmin.getText());

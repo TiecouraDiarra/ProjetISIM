@@ -16,6 +16,8 @@ public class langue extends javax.swing.JFrame {
     /**
      * Creates new form langue
      */
+    
+    //CONSTRUCTEUR PAR DEFAUT
     public langue() {
         initComponents();
     }
@@ -92,6 +94,7 @@ public class langue extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //==================BOUTTON POUR CHANGER LA LANGUE====================================
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         try {

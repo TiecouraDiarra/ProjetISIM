@@ -29,6 +29,8 @@ public class Principale extends javax.swing.JFrame {
     static String url = "jdbc:mysql://localhost/gestion";
     static String user = "root";
     static String password = "";
+    
+    //CONSTRUCTEUR PAR DEFAUT 
     public Principale() {
         initComponents();
         sumEtudiant();
@@ -345,12 +347,14 @@ public class Principale extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //==================BOUTTON POUR AFFICHER LA PAGE ETUDIANT====================================
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
         Etudiants Et = new Etudiants();
         Et.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    //==================BOUTTON POUR D'ACTUALISATION====================================
     private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
         // TODO add your handling code here:
         sumEtudiant();
@@ -367,18 +371,21 @@ public class Principale extends javax.swing.JFrame {
         co.setVisible(true);
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    //==================BOUTTON POUR AFFICHER LA PAGE MATIERE====================================
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // TODO add your handling code here:
         Matières mat = new Matières();
         mat.setVisible(true);
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    //==================BOUTTON POUR AFFICHER LA PAGE CLASSE====================================
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // TODO add your handling code here:
         Classes cl = new Classes();
         cl.setVisible(true);
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    //==================BOUTTON POUR AFFICHER LA PAGE PROFESSEUR====================================
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         Professeurs Prof = new Professeurs();
@@ -389,18 +396,21 @@ public class Principale extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_txtprofMouseReleased
 
+    //==================BOUTTON POUR AFFICHER LA PAGE NOTE====================================
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // TODO add your handling code here:
         Notes notes = new Notes();
         notes.setVisible(true);
     }//GEN-LAST:event_jButton8ActionPerformed
 
+    //==================BOUTTON POUR AFFICHER LA PAGE PARAMETRE====================================
     private void jButton11ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton11ActionPerformed
         // TODO add your handling code here:
         Parametre para = new Parametre();
         para.setVisible(true);
     }//GEN-LAST:event_jButton11ActionPerformed
 
+    //==================METHODE POUR CALCULER LA SOMME DES ETUDIANTS ENREGISTRES====================================
     public void sumEtudiant(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -416,6 +426,8 @@ public class Principale extends javax.swing.JFrame {
             e.printStackTrace(); //POUR GERER LES ERREURS 
         }
     }
+    
+    //==================METHODE POUR CALCULER LA SOMME DES MATIERES ENREGISTREES====================================
     public void sumMatières(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -431,6 +443,8 @@ public class Principale extends javax.swing.JFrame {
             e.printStackTrace(); //POUR GERER LES ERREURS 
         }
     }
+    
+    //==================METHODE POUR CALCULER LA SOMME DES CLASSES ENREGISTREES====================================
     public void sumClasses(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -446,6 +460,8 @@ public class Principale extends javax.swing.JFrame {
             e.printStackTrace(); //POUR GERER LES ERREURS 
         }
     }
+    
+    //==================METHODE POUR CALCULER LA SOMME DES PROFESSEURS ENREGISTRES====================================
     public void sumProf(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -461,6 +477,8 @@ public class Principale extends javax.swing.JFrame {
             e.printStackTrace(); //POUR GERER LES ERREURS 
         }
     }
+    
+    //==================METHODE POUR CALCULER LA SOMME DES NOTES ENREGISTREES====================================
     public void sumNotes(){
         try {
             Class.forName("com.mysql.jdbc.Driver");

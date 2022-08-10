@@ -24,12 +24,16 @@ public class Professeurs extends javax.swing.JFrame {
     /**
      * Creates new form Professeurs
      */
+    
+     //IMPORTER LES BIBLIOTHEQUES DE CONNECTION
     Connection con;
     PreparedStatement pst;
     ResultSet rs;
     static String url = "jdbc:mysql://localhost/gestion";
     static String user = "root";
     static String password = "";
+    
+    //CONSTRUCTEUR PAR DEFAUT 
     public Professeurs() {
         initComponents();
         Table();
@@ -38,6 +42,8 @@ public class Professeurs extends javax.swing.JFrame {
         appelMatiere();
         appelMatiere1();
     }
+    
+    //METHODE CONNECTION
     public void Connect() {
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -46,6 +52,8 @@ public class Professeurs extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+    //==================METHODDE POUR ACTUALISER LES CHAMPS DES PROFESSEURS====================================
     public void Actualiser() {
         txtmat.setText("");
         txtnp.setText("");
@@ -53,6 +61,8 @@ public class Professeurs extends javax.swing.JFrame {
         txtcontact.setText("");
         Badd.setEnabled(true);
     }
+    
+    //==================METHODDE POUR ACTUALISER LES CHAMPS DES COURS====================================
     public void ActualiserCours() {
         txtidcours.setText("");
         txtclassS.setSelectedItem("");
@@ -62,6 +72,8 @@ public class Professeurs extends javax.swing.JFrame {
         txtCombo.setSelectedItem("");
         BaddC.setEnabled(true);
     }
+    
+    //==================METHODDE POUR AFFICHER LA LISTE DANS UN TABLEAU(PROFESSEURS)====================================
     public void Table() {
         String[] professeur = {"Matricules", "Noms & Prénoms", "Spécialités", "Contacts"};
         String[] afficher = new String[5];
@@ -89,6 +101,8 @@ public class Professeurs extends javax.swing.JFrame {
 
         }
     }
+    
+    //==================METHODDE POUR RECHERCHER DANS UN TABLEAU(PROFESSEURS)====================================
     private void RechercherProf(String recherche){
         String util[] = {
             "Matricules", 
@@ -116,6 +130,8 @@ public class Professeurs extends javax.swing.JFrame {
             e.printStackTrace();
         }
     }
+    
+    //==================METHODDE POUR AFFICHER LA LISTE DANS UN TABLEAU(COURS)====================================
     public void TableCours() {
         String[] cours = {"ID", "Classes", "Matières", "Jours", "Heures", "Mat-Prof"};
         String[] afficher = new String[7];
@@ -145,6 +161,8 @@ public class Professeurs extends javax.swing.JFrame {
 
         }
     }
+    
+    //==================METHODDE POUR RECHERCHER DANS UN TABLEAU(COURS)====================================
     private void RechercherCours(String recherche){
         String util[] = {
             "ID", 
@@ -177,6 +195,7 @@ public class Professeurs extends javax.swing.JFrame {
         }
     }
     
+    //==================METHODDE POUR APPELER LES PROFESSEURS ENREGISTRES====================================
     public void appelprof(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -192,6 +211,8 @@ public class Professeurs extends javax.swing.JFrame {
 
         }
     }
+    
+    //==================METHODDE POUR APPELER LES MATIERES ENREGISTREES====================================
     public void appelMatiere(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -207,6 +228,8 @@ public class Professeurs extends javax.swing.JFrame {
 
         }
     }
+    
+    //==================METHODDE POUR APPELER LES MAATIERES ENREGISTREES DANS COURS====================================
     public void appelMatiere1(){
         try {
             Class.forName("com.mysql.jdbc.Driver");
@@ -684,6 +707,7 @@ public class Professeurs extends javax.swing.JFrame {
         setLocationRelativeTo(null);
     }// </editor-fold>//GEN-END:initComponents
 
+    //===========================BOUTTON POUR AJOUTER UN PROFESSEUR=============================================
     private void BaddActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BaddActionPerformed
         // Ajouter un prof
         if (txtmat.getText().trim().isEmpty() || txtnp.getText().trim().isEmpty()
@@ -723,6 +747,7 @@ public class Professeurs extends javax.swing.JFrame {
         txtcontact.setText(model.getValueAt(selct, 3).toString());
     }//GEN-LAST:event_jTable1MouseReleased
 
+    //=========================BOUTTON POUR MODIFIER UN PROFESSEUR====================================
     private void jButton5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton5ActionPerformed
         // TODO add your handling code here:
         if (txtmat.getText().trim().isEmpty() || txtnp.getText().trim().isEmpty()
@@ -750,6 +775,7 @@ public class Professeurs extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton5ActionPerformed
 
+    //=========================BOUTTON POUR SUPPRIMER UN PROFESSEUR====================================
     private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
         // TODO add your handling code here:
         if (txtmat.getText().trim().isEmpty() || txtnp.getText().trim().isEmpty()
@@ -778,11 +804,13 @@ public class Professeurs extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton3ActionPerformed
 
+    //==================BOUTTON POUR ACTUALISER LES CHAMPS====================================
     private void jButton4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton4ActionPerformed
         // TODO add your handling code here:
         Actualiser();
     }//GEN-LAST:event_jButton4ActionPerformed
 
+    //==================BOUTTON POUR AJOUTER UN COURS====================================
     private void BaddCActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BaddCActionPerformed
         // Ajouter un cours
         if (txtidcours.getText().trim().isEmpty()) {
@@ -813,6 +841,7 @@ public class Professeurs extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_BaddCActionPerformed
 
+    //==================BOUTTON POUR SUPPRIMER UN COURS====================================
     private void jButton7ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton7ActionPerformed
         // Supprimer un cours
         if (txtidcours.getText().trim().isEmpty()) {
@@ -840,6 +869,7 @@ public class Professeurs extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton7ActionPerformed
 
+    //==================BOUTTON POUR MODIFIER UN COURS====================================
     private void jButton6ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton6ActionPerformed
         // Modifier un cours
         if (txtidcours.getText().trim().isEmpty()) {
@@ -865,6 +895,7 @@ public class Professeurs extends javax.swing.JFrame {
         }
     }//GEN-LAST:event_jButton6ActionPerformed
 
+    //==================BOUTTON POUR ACTUALISER LES CHAMPS COURS====================================
     private void jButton8ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton8ActionPerformed
         // actualiser un cours
         ActualiserCours();
@@ -883,21 +914,23 @@ public class Professeurs extends javax.swing.JFrame {
         txtCombo.setSelectedItem(model.getValueAt(selct, 5).toString());
     }//GEN-LAST:event_jTable2MouseReleased
 
+    
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-        RechercherProf(txtmat.getText());
     }//GEN-LAST:event_jButton1ActionPerformed
 
+    
     private void jButton9ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton9ActionPerformed
         // TODO add your handling code here:
-        RechercherCours(txtidcours.getText());
     }//GEN-LAST:event_jButton9ActionPerformed
 
+    //==================BOUTTON POUR RECHERCHER UN PROFESSEUR====================================
     private void txtmatKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtmatKeyReleased
         // TODO add your handling code here:
         RechercherProf(txtmat.getText());
     }//GEN-LAST:event_txtmatKeyReleased
 
+    //==================BOUTTON POUR RECHERCHER UN COURS====================================
     private void txtidcoursKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtidcoursKeyReleased
         // TODO add your handling code here:
         RechercherCours(txtidcours.getText());
