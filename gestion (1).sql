@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Hôte : 127.0.0.1
--- Généré le : ven. 05 août 2022 à 13:16
+-- Généré le : mer. 10 août 2022 à 11:24
 -- Version du serveur : 10.4.24-MariaDB
 -- Version de PHP : 8.0.19
 
@@ -88,9 +88,10 @@ CREATE TABLE `etudiant` (
 --
 
 INSERT INTO `etudiant` (`matricule`, `nom`, `naissance`, `inscription`, `sexe`, `adresse`) VALUES
-('19INF107P', 'DIARRA Tiècoura', '0000-00-00 00:0', '0000-00-00', 'M', 'Bamako'),
-('19INF108P', 'MAIGA Abasse', '0000-00-00 00:0', '0000-00-00', 'M', 'Kalaban'),
-('19INF101P', 'TRAORE Mary', '0000-00-00 00:0', '0000-00-00', 'M', 'Bko');
+('19INF107P', 'DIARRA Tiècoura', '01/06/2000', '19/10/2019', 'M', 'Bamako'),
+('19INF108P', 'MAIGA Abasse', '10/01/2000', '19/10/2019', 'M', 'Kalaban'),
+('19INF101P', 'TRAORE Mary', '01/01/2001', '19/10/2019', 'M', 'Bko'),
+('19INF106P', 'TRAORE Mohamed', '25/05/1997', '19/10/2019', 'M', 'Daoudabougou');
 
 -- --------------------------------------------------------
 
@@ -171,7 +172,7 @@ CREATE TABLE `note` (
 
 INSERT INTO `note` (`noteID`, `matricule`, `matiere`, `controle`, `examen`, `tp`) VALUES
 ('1', '19INF101P', 'ALGO 1', '17.00', '16.00', '15.00'),
-('2', '19INF110P', 'JEE', '18.50', '19.50', '17.00');
+('2', '19INF108P', 'ALGO 1', '17.00', '16.00', '15.00');
 
 -- --------------------------------------------------------
 
